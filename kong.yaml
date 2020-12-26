@@ -1,0 +1,22 @@
+_format_version: "1.1"
+services:
+- connect_timeout: 60000
+  host: localhost
+  name: treeftly
+  port: 8080
+  protocol: http
+  read_timeout: 60000
+  retries: 5
+  write_timeout: 60000
+  routes:
+  - id: ad68b600-aa24-4f9e-8ea7-72d454f259dd
+    paths:
+    - /
+    path_handling: v0
+    preserve_host: false
+    protocols:
+    - http
+    - https
+    regex_priority: 0
+    strip_path: true
+    https_redirect_status_code: 426
