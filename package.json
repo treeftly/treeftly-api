@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "PORT=8080 DEBUG=treeftly-api:server nodemon --exec babel-node ./bin/www",
+    "start": "PORT=8080 DEBUG=treeftly-api:server NODE_ENV=development nodemon --exec babel-node ./bin/www",
     "init-db": "./scripts/initialize_db.sh",
     "init-kong": "./scripts/initialize_kong.sh",
     "lint": "eslint ."

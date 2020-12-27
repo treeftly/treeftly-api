@@ -1,13 +1,10 @@
 import express from 'express'
 import cookieParser from 'cookie-parser'
 import logger from 'morgan'
-import { Sequelize } from 'sequelize'
-import indexRouter from './routes/index'
 import usersRouter from './routes/users'
-import { DATABASE } from './configs'
-
-const { USERNAME, PASSWORD, NAME } = DATABASE
-const sequelize = new Sequelize(`postgres://${USERNAME}:${PASSWORD}@localhost:5432/${NAME}`)
+import authsRouter from './routes/auths'
+import sequelize from './utils/db'
+import User from './models/User'
 
 const app = express()
 
@@ -16,12 +13,19 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
 
-app.use('/', indexRouter)
 app.use('/users', usersRouter)
+app.use('/auth', authsRouter)
+app.get('/health', (req, res) => {
+  res.json({ status: 'ok' })
+})
 
 sequelize.authenticate()
-  .then(() => {
-    console.info('Successfully connected to the database')
+  .then(async () => {
+    if (process.env.NODE_ENV !== 'production') {
+      await sequelize.sync({ force: true })
+    }
+
+    console.info('Successfully connected database!')
   })
   .catch((err) => {
     console.error(`Error connecting to the database: ${err}`)
