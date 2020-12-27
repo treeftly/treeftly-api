@@ -1,0 +1,8 @@
+{
+  "extends": "eslint-config-airbnb-base",
+  "rules": {
+    "semi": ["error", "never"],
+    "no-console": ["warn", { "allow": ["warn", "error", "info"]}],
+    "import/prefer-default-export": "off"
+  }
+}

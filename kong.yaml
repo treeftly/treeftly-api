@@ -20,3 +20,6 @@ services:
     regex_priority: 0
     strip_path: true
     https_redirect_status_code: 426
+consumers:
+- username: anonymous_users
+  id: 297153c8-38b3-4e7b-9897-31a8ea3e747c

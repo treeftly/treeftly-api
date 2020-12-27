@@ -1,24 +1,30 @@
-const express = require('express')
-const cookieParser = require('cookie-parser')
-const logger = require('morgan')
-const fetch = require('axios')
+import express from 'express'
+import cookieParser from 'cookie-parser'
+import logger from 'morgan'
+import { Sequelize } from 'sequelize'
+import indexRouter from './routes/index'
+import usersRouter from './routes/users'
+import { DATABASE } from './configs'
 
-const indexRouter = require('./routes/index')
-const usersRouter = require('./routes/users')
+const { USERNAME, PASSWORD, NAME } = DATABASE
+const sequelize = new Sequelize(`postgres://${USERNAME}:${PASSWORD}@localhost:5432/${NAME}`)
 
 const app = express()
 
-app.use(logger('dev'))
+app.use(logger('short'))
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
 
 app.use('/', indexRouter)
 app.use('/users', usersRouter)
-app.use('/register', async (req, res) => {
-  const { data } = await fetch.get('http://localhost:8001/services')
-  console.log(data)
-  res.json({ status: "ok" })
-})
+
+sequelize.authenticate()
+  .then(() => {
+    console.info('Successfully connected to the database')
+  })
+  .catch((err) => {
+    console.error(`Error connecting to the database: ${err}`)
+  })
 
 module.exports = app
