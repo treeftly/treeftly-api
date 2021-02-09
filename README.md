@@ -20,3 +20,17 @@ Steps to setup your dev environment
 3. `yarn init-kong` - this command will run migration against Kong database and start Kong
 4. `yarn start` - this command will start the API server
 
+## Kong commands
+
+### Starting Kong service
+
+```sh
+kong start -c kong.conf
+```
+
+### Setting new configuration on Kong
+
+```sh
+deck diff --select-tag deck-sync # Check changes and verify them
+deck sync --select-tag deck-sync # Make actual changes
+```

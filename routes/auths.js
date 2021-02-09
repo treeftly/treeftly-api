@@ -18,11 +18,14 @@ router.post('/register', async (req, res, next) => {
     res.json(newUser.toJSON())
     next()
   } catch (err) {
-    console.log('err', err?.response)
     console.error(`Error creating user: ${err}`)
     res.status(err?.response?.status)
     res.send(err?.response?.data)
   }
 }, sendMail)
+
+router.post('/login', async (req, res) => {
+  res.json({ status: 'ok' })
+})
 
 module.exports = router

@@ -4,7 +4,6 @@ import logger from 'morgan'
 import usersRouter from './routes/users'
 import authsRouter from './routes/auths'
 import sequelize from './utils/db'
-import User from './models/User'
 
 const app = express()
 

@@ -22,7 +22,7 @@ sleep 5
 echo "Kong is up and running with version: $(kong version)"
 
 echo "Syncing configuration..."
-deck sync
+deck sync --select-tag deck-sync
 
 echo "Kong gateway is up and in-sync!"
 echo -e "\nGateway URL: http://localhost:8000"
