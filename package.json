@@ -5,7 +5,6 @@
   "scripts": {
     "start": "PORT=8080 DEBUG=treeftly-api:server NODE_ENV=development nodemon --exec babel-node ./bin/www",
     "init-db": "./scripts/initialize_db.sh",
-    "init-kong": "./scripts/initialize_kong.sh",
     "lint": "eslint ."
   },
   "dependencies": {
@@ -20,6 +19,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.12.10",
+    "@babel/eslint-parser": "^7.12.17",
     "@babel/node": "^7.12.10",
     "@babel/preset-env": "^7.12.11",
     "eslint": "^7.16.0",

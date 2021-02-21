@@ -1,3 +1,3 @@
 export default (req) => {
-  console.log(req.body)
+  console.info(req.body)
 }
