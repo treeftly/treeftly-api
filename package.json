@@ -28,7 +28,7 @@
     "lint": "eslint src/. test/. --config .eslintrc --fix",
     "dev": "nodemon src/",
     "start": "node src/",
-    "jest": "jest  --forceExit",
+    "jest": "jest --forceExit --detectOpenHandles",
     "init-db": "./scripts/initialize_db.sh"
   },
   "standard": {

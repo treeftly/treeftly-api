@@ -24,13 +24,8 @@ describe('Feathers application tests (with jest)', () => {
 
   describe('404', () => {
     it('returns 404 status', async () => {
-      expect.assertions(2)
       try {
-        await axios.get(getUrl('path/to/nowhere'), {
-          headers: {
-            Accept: 'text/html',
-          },
-        })
+        await axios.get(getUrl('path/to/nowhere'))
       } catch (error) {
         const { response } = error
 
