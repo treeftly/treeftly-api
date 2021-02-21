@@ -8,10 +8,11 @@
   "rules": {
     "semi": ["error", "never"],
     "no-console": ["warn", { "allow": ["warn", "error", "info"]}],
-    "import/prefer-default-export": "off"
+    "import/prefer-default-export": "off",
+    "class-methods-use-this": "off"
   },
   "parserOptions": {
     "ecmaVersion": 2018
   },
-  "parser": "@babel/eslint-parser"
+  "parser": "@babel/eslint-parser",
 }

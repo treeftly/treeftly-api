@@ -23,7 +23,7 @@ describe('Feathers application tests (with jest)', () => {
   })
 
   describe('404', () => {
-    it('shows a 404 HTML page', async () => {
+    it('returns 404 status', async () => {
       expect.assertions(2)
       try {
         await axios.get(getUrl('path/to/nowhere'), {
@@ -35,22 +35,7 @@ describe('Feathers application tests (with jest)', () => {
         const { response } = error
 
         expect(response.status).toBe(404)
-        expect(response.data.indexOf('<html>')).not.toBe(-1)
-      }
-    })
-
-    it('shows a 404 JSON error without stack trace', async () => {
-      expect.assertions(4)
-
-      try {
-        await axios.get(getUrl('path/to/nowhere'))
-      } catch (error) {
-        const { response } = error
-
-        expect(response.status).toBe(404)
-        expect(response.data.code).toBe(404)
         expect(response.data.message).toBe('Page not found')
-        expect(response.data.name).toBe('NotFound')
       }
     })
   })

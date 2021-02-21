@@ -37,6 +37,11 @@
     ],
     "ignore": []
   },
+  "jest": {
+    "setupFilesAfterEnv": [
+      "./test/setupTest.js"
+    ]
+  },
   "dependencies": {
     "@feathersjs/authentication": "^4.5.11",
     "@feathersjs/authentication-local": "^4.5.11",
@@ -59,11 +64,12 @@
     "@babel/eslint-parser": "^7.12.17",
     "@babel/node": "^7.12.10",
     "@babel/preset-env": "^7.12.11",
-    "eslint-config-airbnb-base": "^14.2.1",
-    "eslint-plugin-import": "^2.22.1",
     "axios": "^0.21.1",
     "eslint": "^7.17.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.22.1",
     "jest": "^26.6.3",
-    "nodemon": "^2.0.6"
+    "nodemon": "^2.0.6",
+    "regenerator-runtime": "^0.13.7"
   }
 }
