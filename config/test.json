@@ -1,3 +1,4 @@
 {
-  "port": 8998
+  "port": 8998,
+  "postgres": "postgres://treeftly_user@localhost:5432/treeftly_test"
 }

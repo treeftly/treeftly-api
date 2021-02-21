@@ -41,3 +41,15 @@ $ feathers generate service               # Generate a new Service
 $ feathers generate hook                  # Generate a new Hook
 $ feathers help                           # Show all commands
 ```
+
+## Database Migration
+
+1. Running migration to bootstrap database with all the required tables
+    ```
+    npx sequelize-cli db:migrate
+    ```
+
+1. Run seeder to populate data to the database
+    ```
+    npx sequelize-cli db:seed:all
+    ```

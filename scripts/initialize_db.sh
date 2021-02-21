@@ -15,3 +15,11 @@ echo "Successfully created Treeftly database with following connection:"
 echo "DATABASE NAME: ${TREEFTLY_DATABASE}"
 echo "DATABASE USER: ${TREEFTLY_USERNAME}"
 echo "DATABASE PASSWORD: ${TREEFTLY_PASSWORD}"
+
+echo "Creating Treeftly test database..."
+createuser -wdr $TREEFTLY_USERNAME
+echo "Creating database for Treeftly..."
+createdb -U $TREEFTLY_USERNAME -w treeftly_test
+echo "Successfully created Treeftly test database database with following connection:"
+echo "DATABASE NAME: treeftly_test"
+echo "DATABASE USER: ${TREEFTLY_USERNAME}"

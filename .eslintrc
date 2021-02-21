@@ -15,4 +15,5 @@
     "ecmaVersion": 2018
   },
   "parser": "@babel/eslint-parser",
+  "ignorePatterns": ["models/**/*.js", "**/vendor/*.js"]
 }
