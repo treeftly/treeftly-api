@@ -1,17 +1,43 @@
 # Treeftly API
 
 This repository contains code for Treeftly's API. Tech-stack for back-end:
-- ExpressJS - API
-- Postgres - Database
+[Feathers](http://feathersjs.com)
 
-## Prerequisites:
-- [PostgreSQL](https://www.postgresql.org/download/macosx/)
-- NodeJS
+## Getting Started
 
-## Setup
+Getting up and running is as easy as 1, 2, 3.
 
-Steps to setup your dev environment
+1. Make sure you have [NodeJS](https://nodejs.org/) and [npm](https://www.npmjs.com/) installed.
+1. Initialize database
+    ```
+    yarn init-db
+    ```
 
-1. `yarn` - this command installs are the needed dependencies to your local environment
-2. `yarn init-db` - this command initialize your database to be used for KONG and Treeftly API
-4. `yarn start` - this command will start the API server
+1. Install your dependencies
+
+    ```
+    cd path/to/feather
+    yarn
+    ```
+
+1. Start your app
+
+    ```
+    npm dev
+    ```
+
+## Testing
+
+Simply run `npm test` and all your tests in the `test/` directory will be run.
+
+## Scaffolding
+
+Feathers has a powerful command line interface. Here are a few things it can do:
+
+```
+$ npm install -g @feathersjs/cli          # Install Feathers CLI
+
+$ feathers generate service               # Generate a new Service
+$ feathers generate hook                  # Generate a new Hook
+$ feathers help                           # Show all commands
+```
