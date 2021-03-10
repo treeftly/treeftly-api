@@ -1,9 +1,14 @@
 const { authenticate } = require('@feathersjs/authentication').hooks
 
+const unsetRaw = (context) => {
+  Object.assign(context.service, { raw: false })
+  return context
+}
+
 module.exports = {
   before: {
     all: [authenticate('jwt')],
-    find: [],
+    find: [unsetRaw],
     get: [],
     create: [],
     update: [],
