@@ -3,7 +3,6 @@ const { Service } = require('feathers-sequelize')
 exports.Categories = class Categories extends Service {
   async find(params) {
     if (params?.user?.id) {
-      console.log('params?.user?.id', params?.user?.id)
       Object.assign(params.query, {
         $or: [
           { userId: { $eq: null } },
