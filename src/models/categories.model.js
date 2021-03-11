@@ -31,12 +31,12 @@ module.exports = (app) => {
       },
     },
   }, {
-    // hooks: {
-    //   beforeCount(options) {
-    //     // eslint-disable-next-line no-param-reassign
-    //     options.raw = true
-    //   },
-    // },
+    hooks: {
+      beforeCount(options) {
+        // eslint-disable-next-line no-param-reassign
+        options.raw = true
+      },
+    },
   })
 
   // eslint-disable-next-line no-unused-vars
