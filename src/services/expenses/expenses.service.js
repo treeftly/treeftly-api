@@ -1,19 +1,19 @@
 // Initializes the `expenses` service on path `/expenses`
-const { Expenses } = require('./expenses.class');
-const createModel = require('../../models/expenses.model');
-const hooks = require('./expenses.hooks');
+const { Expenses } = require('./expenses.class')
+const createModel = require('../../models/expenses.model')
+const hooks = require('./expenses.hooks')
 
-module.exports = function (app) {
+module.exports = (app) => {
   const options = {
     Model: createModel(app),
-    paginate: app.get('paginate')
-  };
+    paginate: app.get('paginate'),
+  }
 
   // Initialize our service with any options it requires
-  app.use('/expenses', new Expenses(options, app));
+  app.use('/expenses', new Expenses(options, app))
 
   // Get our initialized service so that we can register hooks
-  const service = app.service('expenses');
+  const service = app.service('expenses')
 
-  service.hooks(hooks);
-};
+  service.hooks(hooks)
+}
