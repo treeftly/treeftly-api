@@ -1,8 +1,24 @@
 const { authenticate } = require('@feathersjs/authentication').hooks
 
+const association = (context) => {
+  const { include, ...query } = context.params.query
+
+  if (include) {
+    const UsersModel = context.app.services.users.Model
+    const CategoriesModel = context.app.services.categories.Model
+    context.params.sequelize = {
+      include: [UsersModel, CategoriesModel],
+    }
+
+    context.params.query = query
+  }
+
+  return context
+}
+
 module.exports = {
   before: {
-    all: [authenticate('jwt')],
+    all: [authenticate('jwt'), association],
     find: [],
     get: [],
     create: [],

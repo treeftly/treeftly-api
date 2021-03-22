@@ -48,8 +48,9 @@ module.exports = (app) => {
 
   // eslint-disable-next-line no-unused-vars
   expenses.associate = (models) => {
-    // Define associations here
-    // See http://docs.sequelizejs.com/en/latest/docs/associations/
+    const { users, categories } = models
+    expenses.belongsTo(users)
+    expenses.belongsTo(categories)
   }
 
   return expenses
