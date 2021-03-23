@@ -36,7 +36,7 @@ module.exports = function usersModel(app) {
   // eslint-disable-next-line no-unused-vars
   users.associate = function associate(models) {
     const { expenses } = models
-    users.hasMany(expenses)
+    users.hasMany(expenses, { as: 'expenses' })
   }
 
   return users
