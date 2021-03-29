@@ -6,7 +6,7 @@ const { DataTypes, Deferrable } = Sequelize
 
 module.exports = (app) => {
   const sequelizeClient = app.get('sequelizeClient')
-  const expenses = sequelizeClient.define('expenses', {
+  const transactions = sequelizeClient.define('transactions', {
     date: {
       type: DataTypes.DATEONLY,
       allowNull: false,
@@ -47,11 +47,11 @@ module.exports = (app) => {
   })
 
   // eslint-disable-next-line no-unused-vars
-  expenses.associate = (models) => {
+  transactions.associate = (models) => {
     const { users, categories } = models
-    expenses.belongsTo(users)
-    expenses.belongsTo(categories)
+    transactions.belongsTo(users)
+    transactions.belongsTo(categories)
   }
 
-  return expenses
+  return transactions
 }

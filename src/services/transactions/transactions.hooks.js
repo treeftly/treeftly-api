@@ -18,8 +18,8 @@ const association = (context) => {
 
 module.exports = {
   before: {
-    all: [authenticate('jwt'), association],
-    find: [],
+    all: [authenticate('jwt')],
+    find: [association],
     get: [],
     create: [],
     update: [],
