@@ -1,4 +1,5 @@
 const { authenticate } = require('@feathersjs/authentication').hooks
+const { appendUserId } = require('../../utils/hooks')
 
 const unsetRaw = (context) => {
   Object.assign(context.service, { raw: false })
@@ -18,11 +19,6 @@ const trimData = (context) => {
 
   Object.assign(context.data, trimmedData)
 
-  return context
-}
-
-const appendUserId = (context) => {
-  Object.assign(context.data, { userId: context.params.user.id })
   return context
 }
 
