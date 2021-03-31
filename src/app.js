@@ -4,6 +4,7 @@ const cors = require('cors')
 const feathers = require('@feathersjs/feathers')
 const configuration = require('@feathersjs/configuration')
 const express = require('@feathersjs/express')
+const morgan = require('morgan')
 
 const logger = require('./logger')
 const middleware = require('./middleware')
@@ -23,6 +24,7 @@ app.use(helmet({
 }))
 app.use(cors())
 app.use(compress())
+app.use(morgan('dev'))
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
