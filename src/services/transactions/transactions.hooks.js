@@ -1,4 +1,5 @@
 const { authenticate } = require('@feathersjs/authentication').hooks
+const { protect } = require('@feathersjs/authentication-local').hooks
 const { appendUserId } = require('../../utils/hooks')
 
 const association = (context) => {
@@ -29,7 +30,7 @@ module.exports = {
   },
 
   after: {
-    all: [],
+    all: [protect('user.password')],
     find: [],
     get: [],
     create: [],
