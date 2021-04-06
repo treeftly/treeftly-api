@@ -22,7 +22,7 @@ module.exports = {
   before: {
     all: [authenticate('jwt')],
     find: [association],
-    get: [],
+    get: [association],
     create: [appendUserId],
     update: [],
     patch: [],

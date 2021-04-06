@@ -43,8 +43,6 @@ module.exports = (app) => {
   categories.associate = (models) => {
     const { transactions } = models
     categories.hasMany(transactions)
-    // Define associations here
-    // See http://docs.sequelizejs.com/en/latest/docs/associations/
   }
 
   return categories
