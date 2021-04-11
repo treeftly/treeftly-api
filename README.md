@@ -16,19 +16,18 @@ Getting up and running is as easy as 1, 2, 3.
 1. Install your dependencies
 
     ```
-    cd path/to/feather
     yarn
     ```
 
 1. Start your app
 
     ```
-    npm dev
+    yarn dev
     ```
 
 ## Testing
 
-Simply run `npm test` and all your tests in the `test/` directory will be run.
+Simply run `yarn test` and all your tests in the `test/` directory will be run.
 
 ## Scaffolding
 
