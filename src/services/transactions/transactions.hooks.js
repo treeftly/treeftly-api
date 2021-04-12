@@ -1,6 +1,6 @@
 const { authenticate } = require('@feathersjs/authentication').hooks
 const { protect } = require('@feathersjs/authentication-local').hooks
-const { appendUserId } = require('../../utils/hooks')
+const { appendUserId, userOwnedData } = require('../../utils/hooks')
 
 const association = (context) => {
   const { include, ...query } = context.params.query
@@ -21,7 +21,7 @@ const association = (context) => {
 module.exports = {
   before: {
     all: [authenticate('jwt')],
-    find: [association],
+    find: [association, userOwnedData],
     get: [association],
     create: [appendUserId],
     update: [],
