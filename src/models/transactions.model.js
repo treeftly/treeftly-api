@@ -17,7 +17,7 @@ module.exports = (app) => {
     },
     description: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     categoryId: {
       type: DataTypes.INTEGER,

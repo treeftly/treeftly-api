@@ -6,7 +6,7 @@ const appendUserId = (context) => {
 const userOwnedData = (context) => {
   const { params, ...rest } = context
 
-  if (params.user.id) {
+  if (params.user && params.user.id) {
     Object.assign(params.query, {
       $or: [
         { userId: { $eq: null } },
