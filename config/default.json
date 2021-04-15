@@ -28,5 +28,6 @@
       "passwordField": "password"
     }
   },
-  "postgres": "postgres://treeftly_user:treeftly_password@localhost:5432/treeftly"
+  "postgres": "postgres://treeftly_user:treeftly_password@localhost:5432/treeftly",
+  "sslMode": false
 }

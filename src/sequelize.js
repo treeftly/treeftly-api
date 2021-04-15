@@ -2,8 +2,12 @@ const Sequelize = require('sequelize')
 
 module.exports = function sequelizeApp(app) {
   const connectionString = app.get('postgres')
+  const sslMode = app.get('sslMode')
   const sequelize = new Sequelize(connectionString, {
     dialect: 'postgres',
+    dialectOptions: {
+      ssl: sslMode,
+    },
     logging: false,
     define: {
       freezeTableName: true,
