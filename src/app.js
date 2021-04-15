@@ -41,6 +41,28 @@ app.configure(services)
 // Set up event channels (see channels.js)
 app.configure(channels)
 
+// Health check
+app.use('/health', {
+  async find() {
+    const sequelizeClient = app.get('sequelizeClient')
+
+    try {
+      await sequelizeClient.authenticate()
+      return {
+        status: 'ok',
+        database: 'healthy',
+      }
+    } catch (err) {
+      logger.error('Error connecting to database.', err)
+
+      return {
+        status: 'ok',
+        database: 'not connected',
+      }
+    }
+  },
+})
+
 // Configure a middleware for 404s and the error handler
 app.use(express.notFound({ html: false }))
 app.use(express.errorHandler({ logger, html: false }))

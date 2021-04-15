@@ -1,0 +1,7 @@
+{
+  "port": "NODE_PORT",
+  "authentication": {
+    "secret": "AUTH_SECRET"
+  },
+  "postgres": "POSTGRES_DB"
+}
