@@ -16,13 +16,18 @@ const sequelize = require('./sequelize')
 
 const app = express(feathers())
 
+const corsOptions = {
+  origin: [/localhost/, /treeftly\.com/],
+  optionsSuccessStatus: 200,
+}
+
 // Load app configuration
 app.configure(configuration())
 // Enable security, CORS, compression, favicon and body parsing
 app.use(helmet({
   contentSecurityPolicy: false,
 }))
-app.use(cors())
+app.use(cors(corsOptions))
 app.use(compress())
 app.use(morgan('dev'))
 app.use(express.json())
