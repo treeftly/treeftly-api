@@ -7,6 +7,7 @@ module.exports = {
   [env]: {
     dialect,
     url: app.get(dialect),
+    ssl: app.get('sslMode'),
     migrationStorageTableName: '_migrations',
   },
 }
