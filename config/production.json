@@ -1,5 +1,8 @@
 {
   "host": "feather-app.feathersjs.com",
   "port": "PORT",
-  "sslMode": true
+  "sslMode": {
+    "require": true,
+    "rejectUnauthorized": false
+  }
 }
