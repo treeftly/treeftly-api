@@ -13,6 +13,7 @@ const appHooks = require('./app.hooks')
 const channels = require('./channels')
 const authentication = require('./authentication')
 const sequelize = require('./sequelize')
+const { sendMail } = require('./utils/hooks')
 
 const app = express(feathers())
 
@@ -46,6 +47,19 @@ app.configure(authentication)
 app.configure(services)
 // Set up event channels (see channels.js)
 app.configure(channels)
+
+app.use('/email', {
+  async get(id) {
+    const config = app.get('mail')
+    const UserService = app.service('users')
+
+    const user = await UserService.get(id)
+
+    sendMail(user, config)
+
+    return user
+  },
+})
 
 // Health check
 app.use('/health', {

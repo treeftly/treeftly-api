@@ -29,5 +29,13 @@
     }
   },
   "postgres": "postgres://treeftly_user:treeftly_password@localhost:5432/treeftly",
-  "sslMode": false
+  "sslMode": false,
+  "mail": {
+    "host": "smtp.mailtrap.io",
+    "username": "923227cfe89362",
+    "password": "5e0fcbf4ad2140",
+    "port": 587,
+    "secure": false,
+    "templates": "../src/assets/templates"
+  }
 }
