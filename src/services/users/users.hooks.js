@@ -1,8 +1,8 @@
 const { authenticate } = require('@feathersjs/authentication').hooks
-
 const {
   hashPassword, protect,
 } = require('@feathersjs/authentication-local').hooks
+const { sendMail } = require('../../utils/hooks')
 
 module.exports = {
   before: {
@@ -23,7 +23,7 @@ module.exports = {
     ],
     find: [],
     get: [],
-    create: [],
+    create: [sendMail],
     update: [],
     patch: [],
     remove: [],

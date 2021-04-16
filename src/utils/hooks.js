@@ -22,7 +22,9 @@ const userOwnedData = (context) => {
   return { ...rest, params }
 }
 
-const sendMail = async (user, config) => {
+const sendMail = async (params) => {
+  const { app, result: user } = params
+  const config = app.get('mail')
   const {
     username, password, templates, ...rest
   } = config
@@ -52,8 +54,7 @@ const sendMail = async (user, config) => {
   }
 
   try {
-    await transport.verify()
-    transport.sendMail(mailPayload)
+    await transport.sendMail(mailPayload)
   } catch (err) {
     console.error('Failed to connect to SMTP', err)
   }
