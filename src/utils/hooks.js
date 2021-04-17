@@ -1,7 +1,3 @@
-const nodemailer = require('nodemailer')
-const hbs = require('nodemailer-express-handlebars')
-const handlebars = require('express-handlebars')
-
 const appendUserId = (context) => {
   Object.assign(context.data, { userId: context.params.user.id })
   return context
@@ -22,42 +18,29 @@ const userOwnedData = (context) => {
   return { ...rest, params }
 }
 
-const sendMail = async (params) => {
-  const { app, result: user } = params
-  const config = app.get('mail')
-  const {
-    username, password, templates, ...rest
-  } = config
-  const transport = nodemailer.createTransport({
-    ...rest,
-    auth: {
-      user: username,
-      pass: password,
-    },
-  })
-  const viewEngine = handlebars.create({
-    partialsDir: 'partials/',
-    defaultLayout: false,
-  })
+const sendMail = async (context) => {
+  if (process.env.NODE_ENV === 'test') {
+    return context
+  }
 
-  transport.use('compile', hbs({ viewEngine, viewPath: templates, extName: '.html' }))
+  const { app, result: user, verificationToken } = context
+  const { url } = app.get('mail')
+  const mailQueue = app.get('mail-queue')
 
-  const mailPayload = {
+  const payload = {
     from: 'hello@treeftly.com',
     to: user.email,
     subject: 'Verify email address',
     template: 'verify-mail',
     context: {
       user,
-      url: 'https://treeftly.com/verify?id=some-unique-id',
+      url: `${url}/verify-email?token=${verificationToken.token}`,
     },
   }
 
-  try {
-    await transport.sendMail(mailPayload)
-  } catch (err) {
-    console.error('Failed to connect to SMTP', err)
-  }
+  mailQueue.push({ app, payload })
+
+  return context
 }
 
 module.exports = {

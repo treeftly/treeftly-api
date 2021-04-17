@@ -2,6 +2,14 @@ const app = require('../../src/app')
 
 describe('\'transactions\' service', () => {
   beforeAll(async () => {
+    let foundUser
+
+    try {
+      foundUser = await app.service('users').get(5)
+    } catch (err) {
+      // Ignore if user is not found
+    }
+
     const user = {
       id: 5,
       email: 'janedoe@mail.com',
@@ -25,7 +33,10 @@ describe('\'transactions\' service', () => {
     const params = { user: { id: 5 } }
 
     try {
-      await app.service('users').create(user)
+      if (!foundUser) {
+        await app.service('users').create(user)
+      }
+
       await app.service('categories').create(category, params)
       await app.service('transactions').create(transaction, params)
     } catch (err) {

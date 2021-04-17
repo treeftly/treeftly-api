@@ -36,6 +36,7 @@
     "password": "5e0fcbf4ad2140",
     "port": 587,
     "secure": false,
-    "templates": "../src/assets/templates"
+    "templates": "../src/assets/templates",
+    "url": "http://localhost:3000"
   }
 }

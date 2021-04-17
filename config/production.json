@@ -4,5 +4,8 @@
   "sslMode": {
     "require": true,
     "rejectUnauthorized": false
+  },
+  "mail": {
+    "url": "https://treeftly.com"
   }
 }
