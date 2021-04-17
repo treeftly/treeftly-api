@@ -8,6 +8,7 @@ describe('\'transactions\' service', () => {
       password: 'test',
       firstName: 'Jane',
       lastName: 'Doe',
+      isVerified: true,
     }
     const category = {
       id: 1,
