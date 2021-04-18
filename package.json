@@ -27,7 +27,7 @@
     "test": "yarn run lint && yarn run jest",
     "lint": "eslint src/. test/. --config .eslintrc --fix",
     "dev": "nodemon --exec babel-node src/",
-    "start": "node src/",
+    "start": "sequelize db:migrate && node src/",
     "jest": "jest --forceExit --detectOpenHandles",
     "init-db": "./scripts/initialize_db.sh",
     "postinstall": "husky install"

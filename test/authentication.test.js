@@ -12,6 +12,7 @@ describe('authentication', () => {
       password: 'supersecret',
       firstName: 'John',
       lastName: 'Doe',
+      isVerified: true,
     }
 
     beforeAll(async () => {
@@ -30,6 +31,47 @@ describe('authentication', () => {
 
       expect(accessToken).toBeTruthy()
       expect(user).toBeTruthy()
+    })
+
+    describe('not verified', () => {
+      let unverifiedUser
+      beforeAll(async () => {
+        unverifiedUser = {
+          id: 4,
+          email: 'notverified@mail.com',
+          password: 'password',
+          firstName: 'Johnny',
+          lastName: 'Cash',
+          isVerified: false,
+        }
+
+        try {
+          await app.service('users').create(unverifiedUser)
+        } catch (err) {
+          // Ignore error
+        }
+      })
+
+      afterAll(async () => {
+        let user
+
+        try {
+          await app.service('users').get(4)
+        } catch (err) {
+          // Ignore error
+        }
+
+        if (user) {
+          await app.service('users').remove(4)
+        }
+      })
+
+      it('should throw error when user is not verified', () => {
+        expect(app.service('auth').create({
+          strategy: 'local',
+          ...unverifiedUser,
+        })).rejects.toThrow('Account is not verified. Please verify the account and try again.')
+      })
     })
   })
 })
