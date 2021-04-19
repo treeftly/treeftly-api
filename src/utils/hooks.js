@@ -19,7 +19,6 @@ const userOwnedData = (context) => {
 }
 
 const sendMail = async (context) => {
-  console.log('send mail called')
   if (process.env.NODE_ENV === 'test') {
     return context
   }
