@@ -1,3 +1,6 @@
+const { protect } = require('@feathersjs/authentication-local').hooks
+const { sendMail } = require('../../utils/hooks')
+
 module.exports = {
   before: {
     all: [],
@@ -10,10 +13,10 @@ module.exports = {
   },
 
   after: {
-    all: [],
+    all: [protect('password')],
     find: [],
     get: [],
-    create: [],
+    create: [sendMail],
     update: [],
     patch: [],
     remove: [],

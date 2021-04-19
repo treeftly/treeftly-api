@@ -1,11 +1,8 @@
 const { authenticate } = require('@feathersjs/authentication').hooks
-const crypto = require('crypto-random-string')
-const addDate = require('date-fns/add')
 const {
   hashPassword, protect,
 } = require('@feathersjs/authentication-local').hooks
 
-const { sendMail } = require('../../utils/hooks')
 const logger = require('../../logger')
 
 const createToken = async (context) => {
@@ -16,16 +13,9 @@ const createToken = async (context) => {
   const { app, result: user } = context
 
   const VerificationTokenSVC = app.service('verification-tokens')
-  const payload = {
-    userId: user.id,
-    token: crypto({ length: 20 }),
-    validUntil: addDate(new Date(), { days: 7 }),
-  }
 
   try {
-    const verificationToken = await VerificationTokenSVC.create(payload)
-    Object.assign(context, { verificationToken })
-
+    await VerificationTokenSVC.create({ email: user.email })
     return context
   } catch (err) {
     logger.error(`Error creating token for userId: ${user.id}: ${err}`)
@@ -52,7 +42,7 @@ module.exports = {
     ],
     find: [],
     get: [],
-    create: [createToken, sendMail],
+    create: [createToken],
     update: [],
     patch: [],
     remove: [],

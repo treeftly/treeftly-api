@@ -19,11 +19,12 @@ const userOwnedData = (context) => {
 }
 
 const sendMail = async (context) => {
+  console.log('send mail called')
   if (process.env.NODE_ENV === 'test') {
     return context
   }
 
-  const { app, result: user, verificationToken } = context
+  const { app, result: user, params: { verificationToken } } = context
   const { url } = app.get('mail')
   const mailQueue = app.get('mail-queue')
 
