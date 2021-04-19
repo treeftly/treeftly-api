@@ -3,5 +3,10 @@
   "authentication": {
     "secret": "AUTH_SECRET"
   },
-  "postgres": "POSTGRES_DB"
+  "postgres": "POSTGRES_DB",
+  "mail": {
+    "host": "MAIL_HOST",
+    "username": "MAIL_USERNAME",
+    "password": "MAIL_PASSWORD"
+  }
 }

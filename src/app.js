@@ -13,6 +13,8 @@ const appHooks = require('./app.hooks')
 const channels = require('./channels')
 const authentication = require('./authentication')
 const sequelize = require('./sequelize')
+const mailer = require('./mailer')
+const queue = require('./queue')
 
 const app = express(feathers())
 
@@ -46,6 +48,10 @@ app.configure(authentication)
 app.configure(services)
 // Set up event channels (see channels.js)
 app.configure(channels)
+// Setup email transport
+app.configure(mailer)
+// Setup queue for long running tasks
+app.configure(queue)
 
 // Health check
 app.use('/health', {

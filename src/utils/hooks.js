@@ -18,7 +18,33 @@ const userOwnedData = (context) => {
   return { ...rest, params }
 }
 
+const sendMail = async (context) => {
+  if (process.env.NODE_ENV === 'test') {
+    return context
+  }
+
+  const { app, result: user, params: { verificationToken } } = context
+  const { url } = app.get('mail')
+  const mailQueue = app.get('mail-queue')
+
+  const payload = {
+    from: 'hello@treeftly.com',
+    to: user.email,
+    subject: 'Verify email address',
+    template: 'verify-mail',
+    context: {
+      user,
+      url: `${url}/verify-email/${verificationToken.token}`,
+    },
+  }
+
+  mailQueue.push({ app, payload })
+
+  return context
+}
+
 module.exports = {
   appendUserId,
   userOwnedData,
+  sendMail,
 }

@@ -24,6 +24,10 @@ module.exports = function usersModel(app) {
       type: DataTypes.STRING,
       allowNull: false,
     },
+    isVerified: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
+    },
   }, {
     hooks: {
       beforeCount(options) {

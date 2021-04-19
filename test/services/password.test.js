@@ -9,6 +9,7 @@ describe('\'password\' service', () => {
       lastName: 'Riot',
       email: 'meloriot@mail.com',
       password: 'test',
+      isVerified: true,
     }
 
     createdUser = await app.service('users').create(user)

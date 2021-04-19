@@ -1,8 +1,27 @@
 const { authenticate } = require('@feathersjs/authentication').hooks
-
 const {
   hashPassword, protect,
 } = require('@feathersjs/authentication-local').hooks
+
+const logger = require('../../logger')
+
+const createToken = async (context) => {
+  if (process.env.NODE_ENV === 'test') {
+    return context
+  }
+
+  const { app, result: user } = context
+
+  const VerificationTokenSVC = app.service('verification-tokens')
+
+  try {
+    await VerificationTokenSVC.create({ email: user.email })
+    return context
+  } catch (err) {
+    logger.error(`Error creating token for userId: ${user.id}: ${err}`)
+    throw err
+  }
+}
 
 module.exports = {
   before: {
@@ -23,7 +42,7 @@ module.exports = {
     ],
     find: [],
     get: [],
-    create: [],
+    create: [createToken],
     update: [],
     patch: [],
     remove: [],
