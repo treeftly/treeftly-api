@@ -13,4 +13,4 @@ class TokenExpired extends FeathersError {
   }
 }
 
-export { NotVerified, TokenExpired }
+module.exports = { NotVerified, TokenExpired }
