@@ -66,6 +66,7 @@
     "nodemailer-express-handlebars": "^4.0.0",
     "pg": "^8.5.1",
     "sequelize": "^6.3.5",
+    "sequelize-cli": "^6.2.0",
     "winston": "^3.0.0"
   },
   "devDependencies": {
