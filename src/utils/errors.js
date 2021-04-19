@@ -1,3 +1,4 @@
+/* eslint-disable max-classes-per-file */
 const { FeathersError } = require('@feathersjs/errors')
 
 class NotVerified extends FeathersError {
@@ -6,4 +7,10 @@ class NotVerified extends FeathersError {
   }
 }
 
-export { NotVerified }
+class TokenExpired extends FeathersError {
+  constructor(message, data) {
+    super(message, 'TokenExpired', 400, 'token-expired', data)
+  }
+}
+
+export { NotVerified, TokenExpired }

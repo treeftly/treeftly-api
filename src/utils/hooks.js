@@ -34,7 +34,7 @@ const sendMail = async (context) => {
     template: 'verify-mail',
     context: {
       user,
-      url: `${url}/verify-email?token=${verificationToken.token}`,
+      url: `${url}/verify-email/${verificationToken.token}`,
     },
   }
 

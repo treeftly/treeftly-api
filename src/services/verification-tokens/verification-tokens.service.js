@@ -6,7 +6,6 @@ const hooks = require('./verification-tokens.hooks')
 module.exports = (app) => {
   const options = {
     Model: createModel(app),
-    paginate: app.get('paginate'),
     multi: ['remove'],
   }
 
