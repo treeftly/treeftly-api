@@ -1,3 +1,5 @@
+const mailFrom = 'hello@treeftly.com'
+
 const appendUserId = (context) => {
   Object.assign(context.data, { userId: context.params.user.id })
   return context
@@ -18,7 +20,7 @@ const userOwnedData = (context) => {
   return { ...rest, params }
 }
 
-const sendMail = async (context) => {
+const sendVerification = async (context) => {
   if (process.env.NODE_ENV === 'test') {
     return context
   }
@@ -28,7 +30,7 @@ const sendMail = async (context) => {
   const mailQueue = app.get('mail-queue')
 
   const payload = {
-    from: 'hello@treeftly.com',
+    from: mailFrom,
     to: user.email,
     subject: 'Verify email address',
     template: 'verify-mail',
@@ -43,8 +45,35 @@ const sendMail = async (context) => {
   return context
 }
 
+const sendResetPassword = async (context) => {
+  if (process.env.NODE_ENV === 'test') {
+    return context
+  }
+
+  const { app, result: user } = context
+  const { token, ...userRest } = user
+  const { url } = app.get('mail')
+  const mailQueue = app.get('mail-queue')
+
+  const payload = {
+    from: mailFrom,
+    to: user.email,
+    subject: 'Reset password',
+    template: 'reset-password',
+    context: {
+      user: userRest,
+      url: `${url}/reset-password/${token}`,
+    },
+  }
+
+  mailQueue.push({ app, payload })
+
+  return { ...context, result: { status: 'success' } }
+}
+
 module.exports = {
   appendUserId,
   userOwnedData,
-  sendMail,
+  sendVerification,
+  sendResetPassword,
 }
