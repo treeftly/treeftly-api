@@ -37,6 +37,23 @@ exports.ForgotPassword = class ForgotPassword {
     return `${timeHash}-${userHash}-${encodedUserId}`
   }
 
+  async create(data) {
+    const { email } = data
+
+    const userResponse = await this.app.service('users').find({ query: { email } })
+
+    if (userResponse.total === 1) {
+      const [userData] = userResponse.data
+
+      return {
+        token: this.generateResetCode(userData),
+        ...userData,
+      }
+    }
+
+    throw new NotFound('User not found')
+  }
+
   async patch(id, data, params) {
     const { password, confirmPassword } = data
     const { token } = params.query
@@ -67,22 +84,5 @@ exports.ForgotPassword = class ForgotPassword {
     }
 
     return userService.patch(user.id, { password })
-  }
-
-  async create(data) {
-    const { email } = data
-
-    const userResponse = await this.app.service('users').find({ query: { email } })
-
-    if (userResponse.total === 1) {
-      const [userData] = userResponse.data
-
-      return {
-        token: this.generateResetCode(userData),
-        ...userData,
-      }
-    }
-
-    throw new NotFound('User not found')
   }
 }
