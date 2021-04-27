@@ -6,10 +6,13 @@ const password = require('./password/password.service.js')
 
 const verificationTokens = require('./verification-tokens/verification-tokens.service.js')
 
+const forgotPassword = require('./forgot-password/forgot-password.service.js')
+
 module.exports = function services(app) {
   app.configure(users)
   app.configure(categories)
   app.configure(transactions)
   app.configure(password)
   app.configure(verificationTokens)
+  app.configure(forgotPassword)
 }

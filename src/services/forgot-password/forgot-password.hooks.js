@@ -1,5 +1,5 @@
 const { protect } = require('@feathersjs/authentication-local').hooks
-const { sendVerification } = require('../../utils/hooks')
+const { sendResetPassword } = require('../../utils/hooks')
 
 module.exports = {
   before: {
@@ -13,12 +13,12 @@ module.exports = {
   },
 
   after: {
-    all: [protect('password')],
+    all: [],
     find: [],
     get: [],
-    create: [sendVerification],
+    create: [sendResetPassword],
     update: [],
-    patch: [],
+    patch: [protect('password')],
     remove: [],
   },
 
