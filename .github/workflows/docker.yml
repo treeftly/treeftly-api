@@ -29,4 +29,4 @@ jobs:
           # Push is a shorthand for --output=type=registry
           push: true
           # List of tags
-          tags: mateeyow/treeftly-api:$GITHUB_RUN_ID
+          tags: mateeyow/treeftly-api:${{ env.GITHUB_RUN_ID }}
