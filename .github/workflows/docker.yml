@@ -17,4 +17,5 @@ jobs:
           # Push is a shorthand for --output=type=registry
           push: true
           # List of tags
-          tags: mateeyow/treeftly-api:latest
+          tags: treeftly/treeftly-api:latest
+          secrets: GIT_AUTH_TOKEN=${{ secrets.GITHUB_TOKEN }}
