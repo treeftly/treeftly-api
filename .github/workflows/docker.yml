@@ -14,4 +14,4 @@ jobs:
           # Push is a shorthand for --output=type=registry
           push: true
           # List of tags
-          tags: treeftly/api:${GITHUB_SHA}
+          tags: treeftly/api:latest
