@@ -1,0 +1,17 @@
+name: Build and Push Docker Image
+
+on: [push]
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Build and push Docker images
+        uses: docker/build-push-action@v2.7.0
+        with:
+          # Build's context is the set of files located in the specified PATH or URL
+          context: .
+          # Push is a shorthand for --output=type=registry
+          push: true
+          # List of tags
+          tags: treeftly/api:${GITHUB_SHA}
