@@ -9,6 +9,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
+      - name: Set Env Values
+        run: |
+          git_commit_short=$(git rev-parse --short HEAD)
+          echo "GIT_COMMIT_SHORT=$git_commit_short" >> $GITHUB_ENV
+
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v1
 
@@ -29,4 +34,4 @@ jobs:
           # Push is a shorthand for --output=type=registry
           push: true
           # List of tags
-          tags: mateeyow/treeftly-api:${{ env.GITHUB_RUN_ID }}
+          tags: mateeyow/treeftly-api:${{ env.GIT_COMMIT_SHORT }}
