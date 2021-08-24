@@ -17,4 +17,4 @@ jobs:
           # Push is a shorthand for --output=type=registry
           push: true
           # List of tags
-          tags: treeftly/api:latest
+          tags: mateeyow/treeftly-api:latest
