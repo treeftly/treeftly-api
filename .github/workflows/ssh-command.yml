@@ -1,0 +1,16 @@
+name: Deploy to Cloudboxes
+
+on: [push]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Execute
+        uses: JimCronqvist/action-ssh@master
+        with:
+          hosts: 'mateeyow@185.107.68.201:4881'
+          privateKey: ${{ secrets.SSH_PRIVATE_KEY }}
+          command: |
+            ls -al
+            sudo apt-get update
