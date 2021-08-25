@@ -11,6 +11,6 @@ jobs:
         with:
           hosts: 'mateeyow@185.107.68.201:4881'
           privateKey: ${{ secrets.SSH_PRIVATE_KEY }}
+          debug: true
           command: |
             ls -al
-            sudo apt-get update
