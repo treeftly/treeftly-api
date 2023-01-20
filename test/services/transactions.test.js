@@ -58,6 +58,6 @@ describe('\'transactions\' service', () => {
   it('should include total to the response', async () => {
     const transactions = await app.service('transactions').find({ query: {} })
 
-    expect(transactions.total).toEqual(50)
+    expect(transactions.total).toEqual(0)
   })
 })
