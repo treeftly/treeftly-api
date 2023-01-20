@@ -17,7 +17,9 @@ echo "DATABASE USER: ${TREEFTLY_USERNAME}"
 echo "DATABASE PASSWORD: ${TREEFTLY_PASSWORD}"
 
 echo "Creating Treeftly test database..."
+export PGPASSWORD=$TREEFTLY_PASSWORD
 createdb -U $TREEFTLY_USERNAME -w treeftly_test
 echo "Successfully created Treeftly test database database with following connection:"
 echo "DATABASE NAME: treeftly_test"
 echo "DATABASE USER: ${TREEFTLY_USERNAME}"
+echo "DATABASE PASSWORD: ${TREEFTLY_PASSWORD}"
