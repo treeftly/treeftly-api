@@ -2,9 +2,9 @@ FROM node:14.17.5 as build
 
 WORKDIR /app
 
-COPY package.json yarn.lock ./
+COPY package.json pnpm-lock.yaml ./
 
-RUN yarn --frozen-lockfile --production
+RUN pnpm --frozen-lockfile --production
 
 ##################################
 

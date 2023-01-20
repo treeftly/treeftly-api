@@ -28,7 +28,7 @@
       "passwordField": "password"
     }
   },
-  "postgres": "postgres://treeftly_user:treeftly_password@localhost:5432/treeftly",
+  "postgres": "postgres://treeftly_user:treeftly_password@localhost:5432/treeftly_test",
   "sslMode": false,
   "mail": {
     "host": "smtp.mailtrap.io",

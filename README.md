@@ -10,24 +10,24 @@ Getting up and running is as easy as 1, 2, 3.
 1. Make sure you have [NodeJS](https://nodejs.org/) and [npm](https://www.npmjs.com/) installed.
 1. Initialize database
     ```
-    yarn init-db
+    pnpm init-db
     ```
 
 1. Install your dependencies
 
     ```
-    yarn
+    pnpm
     ```
 
 1. Start your app
 
     ```
-    yarn dev
+    pnpm dev
     ```
 
 ## Testing
 
-Simply run `yarn test` and all your tests in the `test/` directory will be run.
+Simply run `pnpm test` and all your tests in the `test/` directory will be run.
 
 ## Scaffolding
 
@@ -52,3 +52,12 @@ $ feathers help                           # Show all commands
     ```
     npx sequelize-cli db:seed:all
     ```
+
+
+## Production
+
+Services used:
+
+1. Mailgun
+1. Postres
+1. Docker
