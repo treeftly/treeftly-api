@@ -2,9 +2,11 @@ FROM node:14.17.5 as build
 
 WORKDIR /app
 
+RUN npm i -g pnpm 
+
 COPY package.json pnpm-lock.yaml ./
 
-RUN pnpm --frozen-lockfile --production
+RUN pnpm install --frozen-lockfile -P
 
 ##################################
 
