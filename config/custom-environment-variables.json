@@ -3,6 +3,7 @@
   "authentication": {
     "secret": "AUTH_SECRET"
   },
+  "sslMode": false,
   "postgres": "POSTGRES_DB",
   "mail": {
     "host": "MAIL_HOST",
