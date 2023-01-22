@@ -14,7 +14,7 @@ services:
     expose:
       - 5432
   treeftly:
-    image: mateeyow/treeftly-api:e1901d1
+    image: mateeyow/treeftly-api:ed8c0aa
     container_name: treeftly
     ports:
       - 8081:8080
