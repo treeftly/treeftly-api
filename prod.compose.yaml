@@ -9,12 +9,12 @@ services:
     restart: always
     environment:
       - PGDATA=/var/lib/postgresql/data
-      - POSTGRES_PASSWORD=admin
-      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=treeftly
+      - POSTGRES_USER=treeftly
     expose:
       - 5432
   treeftly:
-    image: mateeyow/treeftly-api:f1e9ce6
+    image: mateeyow/treeftly-api:e1901d1
     container_name: treeftly
     ports:
       - 8081:8080
