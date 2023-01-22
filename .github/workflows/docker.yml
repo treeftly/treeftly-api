@@ -34,5 +34,10 @@ jobs:
           # Push is a shorthand for --output=type=registry
           push: true
           # List of tags
-          tags: mateeyow/treeftly-api:${{ env.GIT_COMMIT_SHORT }},mateeyow/treeftly-api:latest
-          platforms: linux/amd64,linux/arm64
+          tags: |
+            mateeyow/treeftly-api:${{ env.GIT_COMMIT_SHORT }}
+            mateeyow/treeftly-api:latest
+          # List of platforms
+          platforms: |
+            linux/amd64
+            linux/arm64

@@ -23,4 +23,6 @@ COPY public/ ./public
 COPY src/ ./src
 COPY scripts/run.sh ./
 
+ENV NODE_ENV=production
+
 CMD [ "./run.sh" ]

@@ -1,10 +1,7 @@
 {
   "host": "feather-app.feathersjs.com",
   "port": "PORT",
-  "sslMode": {
-    "require": true,
-    "rejectUnauthorized": false
-  },
+  "sslMode": false,
   "mail": {
     "url": "https://treeftly.com"
   }
