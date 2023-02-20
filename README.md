@@ -61,3 +61,13 @@ Services used:
 1. Mailgun
 1. Postres
 1. Docker
+
+To deploy to production you need to copy the [prod.compose.yaml](/prod.compose.yaml) file to the server and create a `.env` file and fill in the values of the following environment variables
+
+```
+TREEFTLY_USER=
+TREEFTLY_PASSWORD=
+IMAGE_TAG=
+MAIL_USERNAME=
+MAIL_PASSWORD=
+```
